@@ -73,6 +73,6 @@ hailomz compile --ckpt best.onnx --hw-arch hailo8l --calib-path calibration_imgs
 > The `Using deprecated NumPy API` warning at the beginning can be ignored it seems.
 
 > [!NOTE]  
-> NOTE: The compilation can take a considerable amount of time.
+> The compilation can take a considerable amount of time.
 
 Once successful, the HEF model will be saved in the same directory.
