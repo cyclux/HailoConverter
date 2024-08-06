@@ -6,7 +6,7 @@ It utilizes the [Hailo Dataflow Compiler](https://hailo.ai/developer-zone/docume
 ## Pre-requisites
 
 - Docker
-- ONNX exported model
+- ONNX exported model (only yolov8s tested so far)
 - Calibration images
 
 ## Usage
