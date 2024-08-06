@@ -1,7 +1,7 @@
 # Hailo ONNX to HEF Converter
 
-This docker image is used to convert an ONNX exported yolov8 model to Hailo's HEF format.
-Basically, it uses the [Hailo Dataflow Compiler](https://hailo.ai/developer-zone/documentation/v3-28-0/?sp_referrer=install/install.html) to convert the ONNX model to HEF format.
+This docker image can be used to convert an ONNX exported **yolov8s model** to Hailo's **HEF format**.
+It utilizes the [Hailo Dataflow Compiler](https://hailo.ai/developer-zone/documentation/v3-28-0/?sp_referrer=install/install.html).
 
 ## Pre-requisites
 
@@ -11,7 +11,7 @@ Basically, it uses the [Hailo Dataflow Compiler](https://hailo.ai/developer-zone
 
 ## Usage
 
-### Train Model and Export
+### 1. Train Model and Export
 
 Train your model with Ultralytics and [export](https://docs.ultralytics.com/modes/export/#why-choose-yolov8s-export-mode) it to ONNX format.
 
@@ -23,7 +23,7 @@ For reference see:
 - https://docs.ultralytics.com/modes/export/#why-choose-yolov8s-export-mode
 - https://github.com/hailo-ai/hailo_model_zoo/blob/master/training/yolov8/README.rst
 
-### Clone the repository
+### 2. Clone the repository
 
 > [!NOTE]  
 > The cloning takes longer than usual because of a large whl file.
@@ -33,13 +33,13 @@ git clone https://github.com/cyclux/HailoConverter.git
 cd HailoConverter
 ```
 
-### Build the docker image
+### 3. Build the docker image
 
 ```bash
 docker build -t hailo_converter .
 ```
 
-### Prepare model and calibration images 
+### 4. Prepare model and calibration images 
 
 Place the ONNX model and calibration images in the root directory of the repository.
 
@@ -52,12 +52,12 @@ cp /path/to/best.onnx best.onnx
 cp -r /path/to/calibration_imgs calibration_imgs
 ```
 
-### Run the docker image
+### 5. Run the docker image
 
 Ensure that the current directory is where the ONNX model and calibration images are placed.
 
 > [!IMPORTANT]
-> They need to be named "best.onnx" and "calibration_imgs".
+> They need to be named `best.onnx` and `calibration_imgs`.
 
 ```bash
 docker run -v $(pwd):/workspace --gpus all --ipc=host hailo_converter:latest
