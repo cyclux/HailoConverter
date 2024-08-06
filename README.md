@@ -41,7 +41,7 @@ docker build -t hailo_converter .
 
 ### 4. Prepare model and calibration images 
 
-Place the ONNX model and calibration images in the root directory of the repository.
+Place the **ONNX model** and **calibration images** (`calibration_imgs` folder) in the root directory of the repository.
 
 > [!NOTE] 
 > The calibration set should be real images that are a subset of the training dataset.
