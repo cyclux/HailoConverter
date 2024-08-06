@@ -47,7 +47,6 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 
 # Switch to non-root user
 USER $USERNAME
-WORKDIR /home/$USERNAME
 
 # Copy and install Hailo Dataflow Compiler
 # See https://hailo.ai/developer-zone/documentation/v3-28-0/?sp_referrer=install/install.html
@@ -61,5 +60,7 @@ RUN pip install /home/$USERNAME/hailo_dataflow_compiler-3.28.0-py3-none-linux_x8
 RUN git clone https://github.com/hailo-ai/hailo_model_zoo.git /home/$USERNAME/hailo_model_zoo && \
     pip install -e /home/$USERNAME/hailo_model_zoo && \
     rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
 
 CMD ["hailomz", "compile", "--ckpt", "best.onnx", "--hw-arch", "hailo8l", "--calib-path", "calibration_imgs/", "--yaml", "yolov8s_custom.yaml", "--model-script", "yolov8s_custom.alls", "--classes", "1"]

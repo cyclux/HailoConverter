@@ -29,7 +29,7 @@
 	},
 
 	"mounts": [
-		"source=hailocompiler-bashhistory,target=/home//commandhistory,type=volume"
+		"source=hailocompiler-bashhistory,target=/home/hailo/commandhistory,type=volume"
 	],
 
 	"remoteUser": "hailo",
@@ -38,6 +38,9 @@
 		"--gpus",
 		"all",
 		"--ipc=host"
-	]
+	],
+	
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+	"workspaceFolder": "/workspace"
 
 }
