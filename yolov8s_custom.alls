@@ -1,0 +1,8 @@
+normalization1 = normalization([0.0, 0.0, 0.0], [255.0, 255.0, 255.0])
+model_optimization_flavor(optimization_level=0, compression_level=0)
+change_output_activation(conv42, sigmoid)
+change_output_activation(conv53, sigmoid)
+change_output_activation(conv63, sigmoid)
+performance_param(compiler_optimization_level=max)
+quantization_param([conv42, conv53, conv63], force_range_out=[0.0, 1.0], weak_force_range_out=enabled)
+nms_postprocess("yolov8s_nms_config.json", meta_arch=yolov8, engine=cpu)
